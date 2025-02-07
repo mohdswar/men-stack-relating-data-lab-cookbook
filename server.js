@@ -22,7 +22,10 @@ mongoose.connection.on('connected', () => {
 })
 
 // MIDDLEWARE
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }))
+app.use(morgan('dev'))
+
 app.use(express.static(path.join(__dirname, "public")))
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -54,12 +57,14 @@ app.get('/auth/sign-in', authCtrl.signInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
 app.use(isSignedIn);
+
 app.get('/users/:userId/foods', foodsController.ren)
 app.get('/users/:userId/foods/new', foodsController.newFood)
 app.post('/users/:userId/foods', foodsController.createFood)
 app.get('/users/:userId/foods/:foodId', foodsController.show)
-
-
+app.delete('/users/:userId/foods/:foodId', foodsController.deleteFood)
+app.put('/users/:userId/foods/:foodId', foodsController.updateFood)
+app.get('/users/:userId/foods/:foodId/edit', foodsController.edit)
 
 
 app.listen(port, () => {

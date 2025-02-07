@@ -1,0 +1,21 @@
+<%- include('../partials/head') %>
+    <div class="container">
+        <h1>editing <%= food.name %>
+        </h1>
+
+        <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
+
+            <label for="name">Food Name:</label>
+            <input type="text" name="name" value="<%= food.name %>" required>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" name="expiryDate" value=<%=food.expiryDate %> required>
+
+
+            <label for="eaten">Eaten:</label>
+            <input type="checkbox" name="eaten" value="true" <%=food.eaten ? "checked" : "" %>>
+
+            <button type="submit" class="btn btn-primary">edit food</button>
+        </form>
+    </div>
+    <%- include('../partials/footer') %>

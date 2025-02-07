@@ -1,9 +1,8 @@
 <%- include('../partials/head') %>
 
     <div class="container">
-        <h1 class="mb-4">🍽️ Welcome to My Pantry</h1>
+        <h1 class="mb-4">Welcome to My Pantry</h1>
 
-        <!-- Add New Food Button -->
         <a href="/users/<%= user._id %>/foods/new" class="btn btn-primary mb-3">
             Add New Item
         </a>
@@ -25,7 +24,7 @@
                 </li>
                 <li class="list-group-item">
                     <strong>Eaten:</strong>
-                    <%= food.eaten ? "✅ Yes" : "❌ No" %>
+                    <%= food.eaten ? "Yes" : " No" %>
                 </li>
                 <% }) %>
         </ul>

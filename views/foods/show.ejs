@@ -1,0 +1,27 @@
+<%- include('../partials/head') %>
+    <div class="container">
+
+        <div class="card mt-2" style="width: 18rem">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= food.name %>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <%= food.expiryDate %>
+                </h6>
+                <p class="card-text">
+                    <%= food.eaten %>
+                </p>
+
+                <a href="/users/<%= user._id %>/foods" class="card-link">Go Back</a>
+                <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete this
+                        application</button>
+                </form>
+                <a href="/users/<%= user._id%>/foods/<%= food._id %>/edit">
+                    <button type="submit" class="btn btn-warning">edit</button>
+                </a>
+            </div>
+
+        </div>
+        <%- include('../partials/footer') %>
