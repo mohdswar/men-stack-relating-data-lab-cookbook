@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+
+    <div class="container">
+        <h1 class="mb-4">🍽️ Welcome to My Pantry</h1>
+
+        <!-- Add New Food Button -->
+        <a href="/users/<%= user._id %>/foods/new" class="btn btn-primary mb-3">
+            Add New Item
+        </a>
+
+
+
+        <ul class="list-group w-50">
+            <% foods.forEach(food=> { %>
+                <a href="/users/<%= user._id %>/foods/<%= food._id %>" class="card-link">Show
+                    more</a>
+
+                <li class="list-group-item">
+                    <strong>Food Name:</strong>
+                    <%= food.name %>
+                </li>
+                <li class="list-group-item">
+                    <strong>Expiry Date:</strong>
+                    <%= new Date(food.expiryDate).toLocaleDateString('en-GB') %>
+                </li>
+                <li class="list-group-item">
+                    <strong>Eaten:</strong>
+                    <%= food.eaten ? "✅ Yes" : "❌ No" %>
+                </li>
+                <% }) %>
+        </ul>
+
+    </div>
+
+    <%- include('../partials/footer') %>

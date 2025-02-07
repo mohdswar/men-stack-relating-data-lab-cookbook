@@ -1,0 +1,17 @@
+<%- include('../partials/head') %>
+    <div class="container">
+        <h1>Add a new item to your Pantry</h1>
+        <form action="/users/<%= user._id %>/foods" method="POST">
+
+            <label for="name">Food Name:</label>
+            <input type="text" name="name" required>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" name="expiryDate" required>
+
+            <label for="eaten">Eaten:</label>
+            <input type="checkbox" name="eaten" value="true">
+            <button type="submit" class="btn btn-primary">Add Food</button>
+        </form>
+    </div>
+    <%- include('../partials/footer') %>

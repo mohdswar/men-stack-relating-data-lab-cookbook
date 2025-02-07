@@ -43,7 +43,8 @@ app.use(passUserToView)
 // CONTROLLERS
 const pagesCtrl = require('./controllers/pages')
 const authCtrl = require('./controllers/auth')
-const vipCtrl = require('./controllers/vip')
+const foodsController = require('./controllers/foods.js');
+
 
 // ROUTE HANDLERS
 app.get('/', pagesCtrl.home)
@@ -52,7 +53,14 @@ app.post('/auth/sign-up', authCtrl.addUser)
 app.get('/auth/sign-in', authCtrl.signInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
-app.get('/vip-lounge', isSignedIn, vipCtrl.welcome)
+app.use(isSignedIn);
+app.get('/users/:userId/foods', foodsController.ren)
+app.get('/users/:userId/foods/new', foodsController.newFood)
+app.post('/users/:userId/foods', foodsController.createFood)
+app.get('/users/:userId/foods/:foodId', foodsController.show)
+
+
+
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)
