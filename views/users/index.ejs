@@ -1,0 +1,13 @@
+<%- include('../partials/head') %>
+
+    <h1>Explore Our Community</h1>
+
+    <ul>
+        <% users.forEach(user=> { %>
+            <li><a href="/users/<%= user._id %>">
+                    <%= user.username %>
+                </a></li>
+            <% }) %>
+    </ul>
+
+    <%- include('../partials/footer') %>

@@ -1,0 +1,24 @@
+<%- include('../partials/head') %>
+
+    <h1>
+        <%= user.username %>'s Pantry
+    </h1>
+
+    <ul>
+        <% user.foods.forEach(food=> { %>
+            <li>
+                <strong>
+                    <%= food.name %>
+                </strong> - Expiry: <%= food.expiryDate %>
+                    <% if (food.eaten===true) { %>
+                        <span style="color: red;">Eaten</span>
+                        <% } else { %>
+                            <span style="color: green;">Not Eaten</span>
+                            <% } %>
+            </li>
+            <% }) %>
+    </ul>
+
+    <a href="/users">Back to Community</a>
+
+    <%- include('../partials/footer') %>

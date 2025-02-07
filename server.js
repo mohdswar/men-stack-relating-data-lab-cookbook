@@ -47,7 +47,7 @@ app.use(passUserToView)
 const pagesCtrl = require('./controllers/pages')
 const authCtrl = require('./controllers/auth')
 const foodsController = require('./controllers/foods.js');
-
+const usersController = require('./controllers/users.js');
 
 // ROUTE HANDLERS
 app.get('/', pagesCtrl.home)
@@ -56,6 +56,8 @@ app.post('/auth/sign-up', authCtrl.addUser)
 app.get('/auth/sign-in', authCtrl.signInForm)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.get('/auth/sign-out', authCtrl.signOut)
+app.get('/users', usersController.index);
+app.get('/users/:userId', usersController.show);
 app.use(isSignedIn);
 
 app.get('/users/:userId/foods', foodsController.ren)
@@ -65,6 +67,7 @@ app.get('/users/:userId/foods/:foodId', foodsController.show)
 app.delete('/users/:userId/foods/:foodId', foodsController.deleteFood)
 app.put('/users/:userId/foods/:foodId', foodsController.updateFood)
 app.get('/users/:userId/foods/:foodId/edit', foodsController.edit)
+
 
 
 app.listen(port, () => {
